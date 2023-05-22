@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: ea2f0a1050245b1478ab00c190e18cbb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - DrawSound: {fileID: 8300000, guid: c755bb37bf5f1204389d76f675187893, type: 3}
+  - DanceSound: {fileID: 8300000, guid: d04e200d9a720b348b2c16f5a5c8c428, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

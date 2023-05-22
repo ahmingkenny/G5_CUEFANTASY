@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 2c432c99349861040aea9a1ae93f5edc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TerrainImpactSound: {fileID: 8300000, guid: c33983b2cd1458343ae04350b021ce02, type: 3}
+  - TroopsImpactSound: {fileID: 8300000, guid: dabcc5636abbf974380b8e9499e936b1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

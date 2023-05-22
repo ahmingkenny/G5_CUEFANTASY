@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 100d97322680bc242af727aa110e50f6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TigerSlash: {fileID: 7957914750934959910, guid: 791c0d065fbb504429bc8f6b3ad0eef7, type: 3}
+  - SlashSound: {fileID: 8300000, guid: b5e1d11634b054e458d7afd87d6f530b, type: 3}
+  - TigerSound: {fileID: 8300000, guid: d8e8a1b936e3fe249811c45545e1275c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

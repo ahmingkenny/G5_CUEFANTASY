@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 29739772c5be1774181bdd162219ab4e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BlackHole: {instanceID: 0}
+  - ThunderSound: {fileID: 8300000, guid: 29eccac8af0b66945b47f3389778b3b3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

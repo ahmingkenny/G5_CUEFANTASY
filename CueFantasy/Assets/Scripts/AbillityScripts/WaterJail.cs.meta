@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 026402e6d0c55bf48bfadb3a0e010641
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SplashFX: {fileID: 1722726733478836, guid: fb6cf2f543e6d4749bfd344319a1709a, type: 3}
+  - smallSplashFX: {fileID: 1722726733478836, guid: a9f5969505155ac499a82697d0bb28bc, type: 3}
+  - WaterSound: {fileID: 8300000, guid: e4e4ee4fb83a7b1449fa744114c0beb5, type: 3}
+  - SplashSound: {fileID: 8300000, guid: 2bf95394acfbc3c4c9e644972879702e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
