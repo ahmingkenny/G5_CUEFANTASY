@@ -17,6 +17,7 @@ public class CueBehaviour : MonoBehaviour, IDestroyable
     protected Attacker attacker;
     protected Defender defender;
     protected GameObject MainCamera;
+    protected CueBallFollower cueBallFollower;
     protected AbilityCaster abilityCaster;
     protected GameObject NoticeBoard;
     protected NoticeBoard noticeBoard;
@@ -26,8 +27,18 @@ public class CueBehaviour : MonoBehaviour, IDestroyable
 
     void Start()
     {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        cueBallFollower = MainCamera.GetComponent<CueBallFollower>();
         anim = GetComponent<Animator>();
         AdjustPosition();
+        if (!CueBallFollower.isFollowing)
+        {
+            anim.SetBool("isDown", true);
+        }
+        else if (CueBallFollower.isFollowing)
+        {
+            TakeCueOut();
+        }
     }
 
     void Update()
@@ -49,7 +60,6 @@ public class CueBehaviour : MonoBehaviour, IDestroyable
             anim.SetTrigger("Dance");
 
         }
-
     }
 
     private void AdjustPosition()
@@ -62,6 +72,7 @@ public class CueBehaviour : MonoBehaviour, IDestroyable
 
     public void TakeCueOut()
     {
+        anim.SetBool("isDown", false);
         anim.SetBool("isPutDown", false);
         anim.SetTrigger("TakeOut");
         AudioSource.PlayClipAtPoint(DrawSound, this.transform.position);

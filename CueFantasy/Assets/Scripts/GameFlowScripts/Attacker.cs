@@ -7,6 +7,7 @@ public class Attacker : MonoBehaviour
 {
 
     public static int CueNum = 1;
+    public static int SecondCueNum = 1;
     public int mana = 0;
     public int legalHit = 0;
     public int illegalHit = 0;
@@ -57,6 +58,7 @@ public class Attacker : MonoBehaviour
     public void Reset()
     {
         CueNum = 1;
+        SecondCueNum = 1;
     }
 
     public void RespawnCue() 
@@ -64,6 +66,13 @@ public class Attacker : MonoBehaviour
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         cueSpawner = MainCamera.GetComponent<CueSpawner>();
         cueSpawner.RespawnCue(CueNum);
+    }
+
+    public void RespawnSecondCue()
+    {
+        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        cueSpawner = MainCamera.GetComponent<CueSpawner>();
+        cueSpawner.RespawnCue(SecondCueNum);
     }
 
 }
