@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackHole : MonoBehaviour, IDestroyable
+public class BlackHole : MonoBehaviour, IDestroyable, IDamageable
 {
     [SerializeField] private GameObject SmokeFX;
     [SerializeField] private int hp = 30;
@@ -75,7 +75,7 @@ public class BlackHole : MonoBehaviour, IDestroyable
         if (gameFlow.turnNum != startTurn)
         {
             startTurn++;
-            TakeDamage(10);
+            Hit(10);
         }
 
         if (hp <= 0)
@@ -91,16 +91,16 @@ public class BlackHole : MonoBehaviour, IDestroyable
 
     }
 
+    public void Hit(int damage)
+    {
+        hp -= damage;
+    }
+
     public void DestroyIt()
     {
         SphereCollider myCollider = GetComponent<SphereCollider>();
         myCollider.radius = 0;
         Destroy(this.gameObject);
-    }
-
-    public void TakeDamage(int damage)
-    {
-        hp -= damage;
     }
 
     private void MoveUp()

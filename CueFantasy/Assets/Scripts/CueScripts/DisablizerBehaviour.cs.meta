@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 29739772c5be1774181bdd162219ab4e
+guid: d629cbe4c5fd34d40805d6ce3b11b8e0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
   - DrawSound: {instanceID: 0}
-  - BlackHole: {fileID: 6595505696345061212, guid: 6cee8455ec95ad4489c4fb9de7755e84, type: 3}
-  - ThunderSound: {fileID: 8300000, guid: 29eccac8af0b66945b47f3389778b3b3, type: 3}
+  - Disableizer: {fileID: 3376780187305117099, guid: 77ed66d2c2b75fd4ea4954d039786d3d, type: 3}
+  - DisablizeSound: {fileID: 8300000, guid: da4cdf826524c614e8bfc2ab2ec59d76, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

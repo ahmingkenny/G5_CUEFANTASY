@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RockColumn : MonoBehaviour, IDestroyable
+public class RockColumn : MonoBehaviour, IDestroyable, IDamageable
 {
     [SerializeField] private GameObject SmallDustExplosionFX;
     [SerializeField] private GameObject DustExplosionFX;
@@ -48,7 +48,7 @@ public class RockColumn : MonoBehaviour, IDestroyable
         if (gameFlow.turnNum != startTurn)
         {
             startTurn++;
-            TakeDamage(10);
+            Hit(10);
         }
 
         if (hp <= 0)
@@ -64,7 +64,7 @@ public class RockColumn : MonoBehaviour, IDestroyable
         Instantiate(DustExplosionFX, this.transform.position, Quaternion.identity);
     }
 
-    public void TakeDamage(int damage)
+    public void Hit(int damage)
     {
         hp -= damage;
     }

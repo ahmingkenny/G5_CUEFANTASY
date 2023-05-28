@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: 29739772c5be1774181bdd162219ab4e
+guid: b773f8493a85a90479c4e810f740dd97
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
   - DrawSound: {instanceID: 0}
-  - BlackHole: {fileID: 6595505696345061212, guid: 6cee8455ec95ad4489c4fb9de7755e84, type: 3}
-  - ThunderSound: {fileID: 8300000, guid: 29eccac8af0b66945b47f3389778b3b3, type: 3}
+  - BattleCrySound: {fileID: 8300000, guid: f59adfa07e67f574bb2f4cf88abb90d1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

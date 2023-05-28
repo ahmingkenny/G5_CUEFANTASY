@@ -41,6 +41,11 @@ public class Defender : MonoBehaviour
         CueNum = num;
     }
 
+    public void SelectSecondCue(int num)
+    {
+        SecondCueNum = num;
+    }
+
     public void GainMana()
     {
         if (mana < manaLimit)

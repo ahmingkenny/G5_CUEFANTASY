@@ -41,6 +41,11 @@ public class Attacker : MonoBehaviour
         CueNum = num;
     }
 
+    public void SelectSecondCue(int num)
+    {
+        SecondCueNum = num;
+    }
+
     public void GainMana()
     {
         if (mana < manaLimit)

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -6342889846852334351}
   m_Layer: 11
   m_Name: TerritoryAttackerSub
-  m_TagString: Untagged
+  m_TagString: SubTerritory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,6 @@ MonoBehaviour:
   faction: 0
   baseType: 1
   explosionFX: {fileID: 1121192042590650, guid: 8eb3aea3fa3320f4f967c7dcf659e41f, type: 3}
-  audio: {fileID: 0}
   explosionSound: {fileID: 0}
 --- !u!82 &-6342889846852334351
 AudioSource:

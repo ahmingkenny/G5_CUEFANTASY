@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class TerritoryBehaviour : MonoBehaviour
 {
-    private enum Faction { Attacker, Defender};
+    private enum Faction { Attacker, Defender, Neutral};
     private enum BaseType { Main, Sub};
 
     Color red = new Color(1f, 0.15f, 0f, 0.1f);
     Color blue = new Color(0f, 0.5f, 1f, 0.1f);
+    Color purple = new Color(1f, 0f, 0.7f, 0.1f);
 
     [Header("Info")]
     [SerializeField] private Faction faction;
@@ -70,6 +71,12 @@ public class TerritoryBehaviour : MonoBehaviour
                 Image.SetActive(true);
             }
 
+        }
+
+        else if (faction == Faction.Neutral)
+        {
+            Material Aura = GetComponent<Renderer>().material;
+            Aura.SetColor("_EmissionColor", purple);
         }
 
     }
@@ -140,6 +147,49 @@ public class TerritoryBehaviour : MonoBehaviour
 
         }
 
+        if (faction == Faction.Neutral)
+        {
+            if (collision.collider.tag == "AttackerBall")
+            {
+
+                Instantiate(explosionFX, collision.contacts[0].point, Quaternion.identity);
+                AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
+                collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
+                attacker.ballIn++;
+                noticeBoard.ShowAttackerIn();
+
+                if (baseType != BaseType.Main)
+                {
+                    faction = Faction.Attacker;
+                }
+
+            }
+
+            if (collision.collider.tag == "DefenderBall")
+            {
+
+                Instantiate(explosionFX, collision.contacts[0].point, Quaternion.identity);
+                AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
+                collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
+                defender.ballIn++;
+                noticeBoard.ShowDefenderIn();
+
+                if (baseType != BaseType.Main)
+                {
+                    faction = Faction.Defender;
+                }
+
+            }
+
+        }
+
     }
 
+    public void Neutralize()
+    {
+        if (baseType != BaseType.Main)
+        {
+            faction = Faction.Neutral;
+        }
+    }
 }

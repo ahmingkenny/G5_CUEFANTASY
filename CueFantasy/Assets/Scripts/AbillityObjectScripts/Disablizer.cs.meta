@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: bf15a0a8c96217646aa8164cf96ab0b5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - TinyExplosionFx: {fileID: 1337198075554910, guid: 582a8036ca9901f4ea66ace99cafe511, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -41,6 +41,8 @@ public class GameFlow : MonoBehaviour
     private EndGameMenu endGameMenu;
     private GameObject NoticeBoard;
     private NoticeBoard noticeBoard;
+    private GameObject powerSlider;
+    private SliderBehaviour sliderBehaviour;
 
     void Awake()
     {
@@ -73,6 +75,8 @@ public class GameFlow : MonoBehaviour
         endGameMenu = EndGameMenu.GetComponent<EndGameMenu>();
         NoticeBoard = GameObject.Find("NoticeBoard");
         noticeBoard = NoticeBoard.GetComponent<NoticeBoard>();
+        powerSlider = GameObject.FindGameObjectWithTag("PowerSlider");
+        sliderBehaviour = powerSlider.GetComponent<SliderBehaviour>();
 
         isNextTurn = true;
         turn = Turn.Attacker;
@@ -92,6 +96,7 @@ public class GameFlow : MonoBehaviour
                 noticeBoard.ShowAttackerTurn();
             }
             turnTextSwitch.UpdateTurnText();
+            sliderBehaviour.ResetValue();
             attacker.GainMana();
             DefIcon.enabled = false;
             AtkIcon.enabled = true;
@@ -109,6 +114,7 @@ public class GameFlow : MonoBehaviour
                 noticeBoard.ShowDefenderTurn();
             }
             turnTextSwitch.UpdateTurnText();
+            sliderBehaviour.ResetValue();
             defender.GainMana();
             AtkIcon.enabled = false;
             DefIcon.enabled = true;

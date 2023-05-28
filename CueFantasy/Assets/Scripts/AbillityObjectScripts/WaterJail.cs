@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterJail : MonoBehaviour, IDestroyable
+public class WaterJail : MonoBehaviour, IDestroyable, IDamageable
 {
     [SerializeField] private GameObject SplashFX;
     [SerializeField] private GameObject smallSplashFX;
@@ -30,7 +30,7 @@ public class WaterJail : MonoBehaviour, IDestroyable
         if (gameFlow.turnNum != startTurn)
         {
             startTurn++;
-            TakeDamage(10);
+            Hit(10);
         }
 
         if (hp <= 0)
@@ -41,8 +41,11 @@ public class WaterJail : MonoBehaviour, IDestroyable
 
     public void OnTriggerEnter(Collider other)
     {
-        Instantiate(smallSplashFX, other.transform.position, Quaternion.identity);
-        AudioSource.PlayClipAtPoint(SplashSound, this.transform.position);
+        if (other.gameObject.tag == "AttackerBall" || other.gameObject.tag == "DefenderBall" || other.gameObject.tag == "JadeBall")
+        {
+            Instantiate(smallSplashFX, other.transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(SplashSound, this.transform.position);
+        }
     }
 
     public void OnTriggerStay(Collider other)
@@ -78,7 +81,7 @@ public class WaterJail : MonoBehaviour, IDestroyable
         AudioSource.PlayClipAtPoint(WaterSound, this.transform.position);
     }
 
-    public void TakeDamage(int damage)
+    public void Hit(int damage)
     {
         hp -= damage;
     }
