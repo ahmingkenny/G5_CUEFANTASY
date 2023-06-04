@@ -8,6 +8,8 @@ MonoImporter:
   - WaterSpear: {fileID: 4629289327258360832, guid: 75f55c09ded4eac42be3cc298990804f, type: 3}
   - HorseBlade: {fileID: 6223729057658765547, guid: dc079dc08fb332841bef619c6d8cc5ad, type: 3}
   - DogRod: {fileID: 4301448126891971679, guid: 3f44711d355318944ac77d0d3531a6f1, type: 3}
+  - SkySword: {fileID: 2016474176087648473, guid: 48f9c8fb6efc4c94e9c05b1dba2b3452, type: 3}
+  - KingAxe: {fileID: 5392488259324890011, guid: d8f1d958e066c9c4eb0a7a51fe592790, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

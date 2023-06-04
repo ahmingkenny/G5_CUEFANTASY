@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AbilityCaster" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAADABAAAIACAAIAAAAEAAAAAAEAAAEABAAAA=</HashCode>
+      <FileName>Assets\Scripts\CameraScripts\AbilityCaster.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="attacker" />
+      <Field Name="gameFlow" />
+      <Field Name="defender" />
+      <Field Name="noticeBoard" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Attacker" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgSAAACAACYABAAAAAACAAAEAAIAAEAgAhAAAAAQAmA=</HashCode>
+      <FileName>Assets\Scripts\GameFlowScripts\Attacker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameFlow" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="GameFlow.Turn" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\GameFlowScripts\GameFlow.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QgQAAUBAEDQBBAIAAGACAAAOARFEAgAAIBAAMIAACEE=</HashCode>
+      <FileName>Assets\Scripts\GameFlowScripts\GameFlow.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="noticeBoard" />
+      <Field Name="perspectiveView" />
+      <Field Name="topView" />
+      <Field Name="cueBallBehaviour" />
+      <Field Name="endGameMenu" />
+      <Field Name="sliderBehaviour" />
+      <Field Name="cueSpawner" />
+      <Field Name="defender" />
+      <Field Name="attacker" />
+      <Field Name="abiliterCaster" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Defender" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgSAAACAACYABAAAAAACAAAEAAIAAEAgAhAAAAAQAmA=</HashCode>
+      <FileName>Assets\Scripts\GameFlowScripts\Defender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoticeBoard" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAKCAAgAAQAAAAAICAqBAAAAAIAAeAAAACAAA=</HashCode>
+      <FileName>Assets\Scripts\UIScripts\NoticeBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PerspectiveView" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQEEAIAEGACBCAAACAAAAgQAAAAIkCAAAAgAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\CameraScripts\PerspectiveView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TopView" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAREEAAAECAIBAAAAAAAIACAAAAAAAAAAAAAIAEAAEA=</HashCode>
+      <FileName>Assets\Scripts\CameraScripts\TopView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="cueBallBehaviour" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CueBallBehaviour" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQCAABIACABhAEAACAAAAAAAAIAAAAIABgAAABACkA=</HashCode>
+      <FileName>Assets\Scripts\BallScripts\CueBallBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="perspectiveView" />
+      <Field Name="gameFlow" />
+      <Field Name="defender" />
+      <Field Name="attacker" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EndGameMenu" Collapsed="true">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQAACAAEAAAAAAAAABAAAAAABAIAAAACABAAEA=</HashCode>
+      <FileName>Assets\Scripts\UIScripts\EndGameMenu.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameFlow" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SliderBehaviour" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAACQAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UIScripts\SliderBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CueSpawner" Collapsed="true">
+    <Position X="9.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAQCAAEEAAAAAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CameraScripts\CueSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CueBehaviour" Collapsed="true">
+    <Position X="9.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CERCAAAAKDABAAABACCAAAAAAAAAAAAAARAAEAhACAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\CueBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="abilityCaster" />
+      <Field Name="attacker" />
+      <Field Name="defender" />
+      <Field Name="noticeBoard" />
+      <Field Name="gameFlow" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DisablizerBehaviour" Collapsed="true">
+    <Position X="1.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAACAACAAAAAQAAgAAAIAAAAAAAACAAgAAAAAgAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\DisablizerBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DogRodBehaviour" Collapsed="true">
+    <Position X="3.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQIAAAAACAAAAAQAAgAAAIAAAAAAAACAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\DogRodBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HorseBladeBehaviour" Collapsed="true">
+    <Position X="6" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAAAQAAgAAAIAAAAAAEACAAgAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\HorseBladeBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NeutralizerBehaviour" Collapsed="true">
+    <Position X="8.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAAAQAAgAAAIAIAAEAAACAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\NeutralizerBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KingAxeBehaviour" Collapsed="true">
+    <Position X="10.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAQAACAAAAAQAAgAAAIAAAEAAAACAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\PowerShotBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SkySwordBehaviour" Collapsed="true">
+    <Position X="12.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAAAQAggAAAYAAAAAAAACAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\SkySwordBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TigerSpearBehaviour" Collapsed="true">
+    <Position X="15" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAAAQAAgAAAIEAAAACAACAAgEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\TigerSpearBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WaterSpearBehaviour" Collapsed="true">
+    <Position X="17.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAACAAAAAQAAgAAAIAAAAAAAACAAgAAACIAAA=</HashCode>
+      <FileName>Assets\Scripts\CueScripts\WaterSpearBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CueBallFollower" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAFAAAAAAAAAAQAAAAgAAAAAAAEAEAAEE=</HashCode>
+      <FileName>Assets\Scripts\CameraScripts\CueBallFollower.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="powerSlider" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CueSwitcher" Collapsed="true">
+    <Position X="11.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAACABAAAAACAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\CameraScripts\CueSwitcher.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameFlow" />
+      <Field Name="attacker" />
+      <Field Name="defender" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BallShooter" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAAgUYACAIBAAAAAACIAACAkEAABAAABQOAABgeEE=</HashCode>
+      <FileName>Assets\Scripts\CameraScripts\BallShooter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="abilityCaster" />
+      <Field Name="powerSlider" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UnityEngine.UI.Slider" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Microsoft JhengHei UI" Size="9" />
+</ClassDiagram>

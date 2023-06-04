@@ -8,7 +8,7 @@ public class GameFlow : MonoBehaviour
     [SerializeField] public int turnLimit = 60;
     private const int startTurnNum = 1;
     public int turnNum;
-    private bool isNextTurn = false;
+    public bool isNextTurn = false;
     public bool isEnd = false;
 
     public enum Turn { Attacker, Defender};
@@ -27,6 +27,7 @@ public class GameFlow : MonoBehaviour
     private Attacker attacker;
     private Defender defender;
     private AbilityCaster abiliterCaster;
+    private RandomEventSystem randomEventSystem;
 
     [Header("UI Reference")]
     private Image DefIcon;
@@ -43,6 +44,8 @@ public class GameFlow : MonoBehaviour
     private NoticeBoard noticeBoard;
     private GameObject powerSlider;
     private SliderBehaviour sliderBehaviour;
+    private GameObject BattleReporter;
+    private BattleReporter battleReporter;
 
     void Awake()
     {
@@ -62,6 +65,7 @@ public class GameFlow : MonoBehaviour
         cueBallBehaviour = CueBall.GetComponent<CueBallBehaviour>();
         attacker = GetComponent<Attacker>();
         defender = GetComponent<Defender>();
+        randomEventSystem = GetComponent<RandomEventSystem>();
 
         DefIcon = GameObject.Find("DefIcon").GetComponent<Image>();
         AtkIcon = GameObject.Find("AtkIcon").GetComponent<Image>();
@@ -77,6 +81,8 @@ public class GameFlow : MonoBehaviour
         noticeBoard = NoticeBoard.GetComponent<NoticeBoard>();
         powerSlider = GameObject.FindGameObjectWithTag("PowerSlider");
         sliderBehaviour = powerSlider.GetComponent<SliderBehaviour>();
+        BattleReporter = GameObject.Find("BattleReporter");
+        battleReporter = BattleReporter.GetComponent<BattleReporter>();
 
         isNextTurn = true;
         turn = Turn.Attacker;
@@ -100,6 +106,8 @@ public class GameFlow : MonoBehaviour
             attacker.GainMana();
             DefIcon.enabled = false;
             AtkIcon.enabled = true;
+            ShowEvent();
+            randomEventSystem.CreateEvent();
             emberColorSwitch.ChangeToRed();
             fireColorSwitch.ChangeToRed();
             cueBallBehaviour.InitializeData();
@@ -118,6 +126,8 @@ public class GameFlow : MonoBehaviour
             defender.GainMana();
             AtkIcon.enabled = false;
             DefIcon.enabled = true;
+            ShowEvent();
+            randomEventSystem.CreateEvent();
             emberColorSwitch.ChangeToBlue();
             fireColorSwitch.ChangeToBlue();
             cueBallBehaviour.InitializeData();
@@ -157,6 +167,7 @@ public class GameFlow : MonoBehaviour
             turn = turn == Turn.Attacker ? Turn.Defender : Turn.Attacker;
 
             BallShooter.isShoot = false;
+            battleReporter.clearText();
             turnNum++;
             isNextTurn = true;
 
@@ -178,6 +189,14 @@ public class GameFlow : MonoBehaviour
 
     }
 
+    private void ShowEvent()
+    {
+        GameObject[] Terrain = GameObject.FindGameObjectsWithTag("Terrain");
+        for (int i = 0; i < Terrain.Length; i++)
+        {
+            Terrain[i].GetComponent<TerrainEventBehaviour>().ShowEvent();
+        }
+    }
     public void Reset()
     {
         turn = Turn.Attacker;

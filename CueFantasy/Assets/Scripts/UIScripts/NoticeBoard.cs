@@ -40,16 +40,6 @@ public class NoticeBoard : MonoBehaviour
         text.text = "防守方違反律例\n請進攻方指定白玉位置";
     }
 
-    public void ShowAttackerIn()
-    {
-        text.text = "進攻方攻破敵陣 !";
-    }
-
-    public void ShowDefenderIn()
-    {
-        text.text = "防守方攻破敵陣 !";
-    }
-
     public void ShowCastingAbility()
     {
         text.text = "正在準備施放技能\n按左鍵選擇施放位置\n(按右鍵取消)";

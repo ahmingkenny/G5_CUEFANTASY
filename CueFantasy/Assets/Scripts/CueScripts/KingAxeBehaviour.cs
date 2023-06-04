@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerShotBehaviour : CueBehaviour, IAbility
+public class KingAxeBehaviour : CueBehaviour, IAbility
 {
-    //[SerializeField] private int cueNum = 2;
+    //[SerializeField] private int cueNum = 6;
     [SerializeField] private string abilityName = "無堅不摧 (2)";
     [SerializeField] private int manaCost = 2;
     [SerializeField] private float power = 2f;

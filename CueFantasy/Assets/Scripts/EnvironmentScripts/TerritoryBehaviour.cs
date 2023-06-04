@@ -29,8 +29,8 @@ public class TerritoryBehaviour : MonoBehaviour
     [Header("UIReference")]
     private GameObject EndGameMenu;
     private EndGameMenu endGameMenu;
-    private GameObject NoticeBoard;
-    private NoticeBoard noticeBoard;
+    private GameObject BattleReporter;
+    private BattleReporter battleReporter;
     private GameObject Image;
 
     void Start()
@@ -42,8 +42,8 @@ public class TerritoryBehaviour : MonoBehaviour
         GameManager = GameObject.Find("GameManager");
         attacker = GameManager.GetComponent<Attacker>();
         defender = GameManager.GetComponent<Defender>();
-        NoticeBoard = GameObject.Find("NoticeBoard");
-        noticeBoard = NoticeBoard.GetComponent<NoticeBoard>();
+        BattleReporter = GameObject.Find("BattleReporter");
+        battleReporter = BattleReporter.GetComponent<BattleReporter>();
     }
 
     void Update()
@@ -92,7 +92,7 @@ public class TerritoryBehaviour : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
                 collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
                 defender.ballIn++;
-                noticeBoard.ShowDefenderIn();
+                battleReporter.ShowDefenderIn();
 
                 if (baseType != BaseType.Main)
                 {
@@ -108,7 +108,7 @@ public class TerritoryBehaviour : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
                 collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
                 defender.ballIn++;
-                noticeBoard.ShowDefenderIn();
+                battleReporter.ShowDefenderIn();
                 EndGameMenu.gameObject.SetActive(true);
                 endGameMenu.ShowDefenderWin();
             }
@@ -124,7 +124,7 @@ public class TerritoryBehaviour : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
                 collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
                 attacker.ballIn++;
-                noticeBoard.ShowAttackerIn();
+                battleReporter.ShowAttackerIn();
 
                 if (baseType != BaseType.Main)
                 {
@@ -140,7 +140,7 @@ public class TerritoryBehaviour : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
                 collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
                 attacker.ballIn++;
-                noticeBoard.ShowAttackerIn();
+                battleReporter.ShowAttackerIn();
                 EndGameMenu.gameObject.SetActive(true);
                 endGameMenu.ShowAttackerWin();
             }
@@ -156,7 +156,7 @@ public class TerritoryBehaviour : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
                 collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
                 attacker.ballIn++;
-                noticeBoard.ShowAttackerIn();
+                battleReporter.ShowAttackerIn();
 
                 if (baseType != BaseType.Main)
                 {
@@ -172,7 +172,7 @@ public class TerritoryBehaviour : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosionSound, this.transform.position);
                 collision.gameObject.GetComponent<IDestroyable>().DestroyIt();
                 defender.ballIn++;
-                noticeBoard.ShowDefenderIn();
+                battleReporter.ShowDefenderIn();
 
                 if (baseType != BaseType.Main)
                 {

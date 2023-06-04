@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NeutralizerBehaviour : CueBehaviour, IAbility
 {
     //[SerializeField] private int cueNum = 5;
-    [SerializeField] private string abilityName = "�˳ٷo�� (8)";
+    [SerializeField] private string abilityName = "弄喧搗鬼 (8)";
     [SerializeField] private int manaCost = 8;
     [SerializeField] private GameObject Fog;
 

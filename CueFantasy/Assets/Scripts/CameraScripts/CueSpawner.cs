@@ -8,6 +8,8 @@ public class CueSpawner : MonoBehaviour
     [SerializeField] private GameObject WaterSpear;
     [SerializeField] private GameObject HorseBlade;
     [SerializeField] private GameObject DogRod;
+    [SerializeField] private GameObject SkySword;
+    [SerializeField] private GameObject KingAxe;
 
     public void SpawnCue(int cueNum)
     {
@@ -35,6 +37,17 @@ public class CueSpawner : MonoBehaviour
             cue.transform.parent = gameObject.transform;
         }
 
+        if (cueNum == 5)
+        {
+            GameObject cue = Instantiate(SkySword, this.transform.position, Quaternion.identity);
+            cue.transform.parent = gameObject.transform;
+        }
+
+        if (cueNum == 6)
+        {
+            GameObject cue = Instantiate(KingAxe, this.transform.position, Quaternion.identity);
+            cue.transform.parent = gameObject.transform;
+        }
     }
 
     public void RespawnCue(int cueNum)
@@ -70,6 +83,17 @@ public class CueSpawner : MonoBehaviour
             cue.transform.parent = gameObject.transform;
         }
 
+        if (cueNum == 5)
+        {
+            GameObject cue = Instantiate(SkySword, this.transform.position, Quaternion.identity);
+            cue.transform.parent = gameObject.transform;
+        }
+
+        if (cueNum == 6)
+        {
+            GameObject cue = Instantiate(KingAxe, this.transform.position, Quaternion.identity);
+            cue.transform.parent = gameObject.transform;
+        }
     }
 
 }
