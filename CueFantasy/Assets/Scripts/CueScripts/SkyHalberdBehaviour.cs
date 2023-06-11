@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisablizerBehaviour : CueBehaviour, IAbility
+public class SkyHalberdBehaviour : CueBehaviour, IAbility
 {
-    //[SerializeField] private int cueNum = 2;
-    [SerializeField] private string abilityName = "抽薪止沸 (4)";
-    [SerializeField] private int manaCost = 4;
-    [SerializeField] private GameObject Disableizer;
+    //[SerializeField] private int cueNum = 7;
+    [SerializeField] private string abilityName = "弄喧搗鬼 (8)";
+    [SerializeField] private int manaCost = 8;
+    [SerializeField] private GameObject Fog;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip DisablizeSound;
+    [SerializeField] private AudioClip LaughSound;
 
     void Start()
     {
@@ -35,14 +35,34 @@ public class DisablizerBehaviour : CueBehaviour, IAbility
         NoticeBoard = GameObject.Find("NoticeBoard");
         noticeBoard = NoticeBoard.GetComponent<NoticeBoard>();
 
-         AudioSource.PlayClipAtPoint(DisablizeSound, this.transform.position);
+        GameObject[] territories;
+        territories = GameObject.FindGameObjectsWithTag("SubTerritory");
+
+        float closestDist = 100f;
+        GameObject closestTerritory = GameObject.FindGameObjectWithTag("SubTerritory");
+
+
+        if (territories != null)
+        {
+            foreach (GameObject territory in territories)
+            {
+                if (Vector3.Distance(territory.transform.position, targetPosition) < closestDist)
+                {
+                    closestTerritory = territory;
+                    closestDist = Vector3.Distance(territory.transform.position, targetPosition);
+                }
+            }
+        }
+
+        AudioSource.PlayClipAtPoint(LaughSound, this.transform.position);
 
         if (GameFlow.turn == GameFlow.Turn.Attacker)
         {
             attacker.mana -= manaCost;
             attacker.UpdateManaSlider();
             ShowAbilityIcon();
-            Instantiate(Disableizer, targetPosition, Quaternion.identity);
+            closestTerritory.GetComponent<TerritoryBehaviour>().Neutralize();
+            Instantiate(Fog, targetPosition, Quaternion.identity);
             noticeBoard.ShowSuccessCasting();
             abilityCaster.isCasting = false;
         }
@@ -51,7 +71,8 @@ public class DisablizerBehaviour : CueBehaviour, IAbility
             defender.mana -= manaCost;
             defender.UpdateManaSlider();
             ShowAbilityIcon();
-            Instantiate(Disableizer, targetPosition, Quaternion.identity);
+            closestTerritory.GetComponent<TerritoryBehaviour>().Neutralize();
+            Instantiate(Fog, targetPosition, Quaternion.identity);
             noticeBoard.ShowSuccessCasting();
             abilityCaster.isCasting = false;
         }
@@ -60,7 +81,7 @@ public class DisablizerBehaviour : CueBehaviour, IAbility
     public void ShowAbilityIcon()
     {
         GameObject AbilityIcon = GameObject.Find("AbilityIcon");
-        GameObject abilityIcon = AbilityIcon.transform.Find("DisablizerIcon").gameObject;
+        GameObject abilityIcon = AbilityIcon.transform.Find("NeutralizerIcon").gameObject;
         abilityIcon.SetActive(true);
         Invoke("DisableAbilityIcon", 2.1f);
     }
@@ -68,7 +89,7 @@ public class DisablizerBehaviour : CueBehaviour, IAbility
     public void DisableAbilityIcon()
     {
         GameObject AbilityIcon = GameObject.Find("AbilityIcon");
-        GameObject abilityIcon = AbilityIcon.transform.Find("DisablizerIcon").gameObject;
+        GameObject abilityIcon = AbilityIcon.transform.Find("NeutralizerIcon").gameObject;
         abilityIcon.SetActive(false);
     }
 

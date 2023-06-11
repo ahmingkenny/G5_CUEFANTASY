@@ -317,8 +317,7 @@ MonoBehaviour:
   faction: 1
   baseType: 0
   explosionFX: {fileID: 1121192042590650, guid: 8eb3aea3fa3320f4f967c7dcf659e41f, type: 3}
-  audio: {fileID: 0}
-  explosionSound: {fileID: 0}
+  explosionSound: {fileID: 8300000, guid: 8a4b992da802b1746bc4a8050b7f0f93, type: 3}
 --- !u!82 &-72063085201843191
 AudioSource:
   m_ObjectHideFlags: 0

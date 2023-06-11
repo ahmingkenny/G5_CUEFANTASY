@@ -17,6 +17,20 @@ public class TerrainEventBehaviour : MonoBehaviour
     private GameObject BattleReporter;
     private BattleReporter battleReporter;
 
+    [SerializeField] private GameObject RainParticle;
+    [SerializeField] private PhysicMaterial OriginalPhysicMat;
+    [SerializeField] private PhysicMaterial RainPhysicMat;
+    private GameObject Rain;
+
+    [SerializeField] private GameObject SnowObject;
+    [SerializeField] private GameObject SnowParticle;
+    private GameObject SnowFall;
+    private GameObject Snow;
+
+    [SerializeField] private GameObject NeutralTerritoryObject;
+    private GameObject NeutralTerritory;
+
+
     void Start()
     {
         GameManager = GameObject.FindGameObjectWithTag("GameManager");
@@ -42,16 +56,21 @@ public class TerrainEventBehaviour : MonoBehaviour
                 {
                     isRaining = false;
                     battleReporter.ShowRainStormStopped();
+                    Destroy(Rain, 0);
+                    GetComponent<Collider>().material = OriginalPhysicMat;
                 }
                 else if (isSnowing)
                 {
                     isSnowing = false;
                     battleReporter.ShowSnowStormStopped();
+                    Destroy(Snow, 0);
+                    Destroy(SnowFall, 0);
                 }
                 else if (isInvading)
                 {
                     isInvading = false;
                     battleReporter.ShowThirdPartyInvasionStopped();
+                    Destroy(NeutralTerritory, 0);
                 }
 
                 isEventing = false;
@@ -68,6 +87,9 @@ public class TerrainEventBehaviour : MonoBehaviour
         isEventing = true;
         isRaining = true;
         battleReporter.ShowRainStorm();
+        Rain = Instantiate(RainParticle, this.transform.position, Quaternion.identity);
+        Rain.transform.parent = gameObject.transform;
+        GetComponent<Collider>().material = RainPhysicMat;
     }
 
     public void CreateSnowStorm()
@@ -77,6 +99,10 @@ public class TerrainEventBehaviour : MonoBehaviour
         isEventing = true;
         isSnowing = true;
         battleReporter.ShowSnowStorm();
+        Snow = Instantiate(SnowObject, this.transform.position, Quaternion.identity);
+        Snow.transform.parent = gameObject.transform;
+        SnowFall = Instantiate(SnowParticle, this.transform.position, Quaternion.identity);
+        SnowFall.transform.parent = gameObject.transform;
     }
 
     public void CreateThirdPartyInvasion()
@@ -86,6 +112,8 @@ public class TerrainEventBehaviour : MonoBehaviour
         isEventing = true;
         isInvading = true;
         battleReporter.ShowThirdPartyInvasion();
+        NeutralTerritory = Instantiate(NeutralTerritoryObject, this.transform.position, Quaternion.identity);
+        NeutralTerritory.transform.parent = gameObject.transform;
     }
 
     public void ShowEvent()

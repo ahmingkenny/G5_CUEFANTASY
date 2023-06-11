@@ -10,6 +10,8 @@ MonoImporter:
   - DogRod: {fileID: 4301448126891971679, guid: 3f44711d355318944ac77d0d3531a6f1, type: 3}
   - SkySword: {fileID: 2016474176087648473, guid: 48f9c8fb6efc4c94e9c05b1dba2b3452, type: 3}
   - KingAxe: {fileID: 5392488259324890011, guid: d8f1d958e066c9c4eb0a7a51fe592790, type: 3}
+  - SkyHalberd: {fileID: 6902751393310586555, guid: 6f78552e03b8b184387f83bdc8355153, type: 3}
+  - Woodsword: {fileID: 8575354209691793143, guid: 0352669d205cc6d4183091186577ff35, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -3,7 +3,13 @@ guid: 21bf3cb6d4ff706489213c73b737b967
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RainParticle: {fileID: 1883937306609917142, guid: a04981d15c1cba34d86f52bdb35962d9, type: 3}
+  - OriginalPhysicMat: {fileID: 13400000, guid: 66e63426abd54a44386f40dd0c1c7a75, type: 2}
+  - RainPhysicMat: {fileID: 13400000, guid: 3738cc360b876794b899b0083f313e92, type: 2}
+  - SnowObject: {fileID: 834915310639061587, guid: 6f0987fcdc4ce7342832486ed8fbe923, type: 3}
+  - SnowParticle: {fileID: 1427963157018132905, guid: ac1b957dd62a02141ad87434d758c9f3, type: 3}
+  - NeutralTerritoryObject: {fileID: 7625684199170587506, guid: 02ba4a4e4ba719c43b8234a04ff2c8aa, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

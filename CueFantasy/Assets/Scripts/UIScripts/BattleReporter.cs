@@ -21,7 +21,7 @@ public class BattleReporter : MonoBehaviour
 
     public void ShowSnowStorm()
     {
-        text.text += "\n漫天風雪正在肆虐 !";
+        text.text += "\n正在吹起漫天風雪 !";
     }
 
     public void ShowThirdPartyInvasion()
@@ -30,11 +30,11 @@ public class BattleReporter : MonoBehaviour
     }
     public void ShowRainStormStopped()
     {
-        text.text += "\n狂風暴雨已經結束";
+        text.text += "\n天氣已回復晴朗";
     }
     public void ShowSnowStormStopped()
     {
-        text.text += "\n漫天風雪已經結束";
+        text.text += "\n天氣已回復晴朗";
     }
     public void ShowThirdPartyInvasionStopped()
     {
