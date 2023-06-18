@@ -9,6 +9,7 @@ public class CueSwitcher : MonoBehaviour
     private GameFlow gameFlow;
     private Attacker attacker;
     private Defender defender;
+    private AIController aiController;
 
     void Start()
     {
@@ -16,13 +17,14 @@ public class CueSwitcher : MonoBehaviour
         gameFlow = GameManager.GetComponent<GameFlow>();
         attacker = GameManager.GetComponent<Attacker>();
         defender = GameManager.GetComponent<Defender>();
+        aiController = GameObject.Find("GameManager").GetComponent<AIController>();
     }
 
     void Update()
     {
         GameObject CueBall = GameObject.FindGameObjectWithTag("CueBall");
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && !TopView.isViewing && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !TopView.isViewing && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0 && !aiController.isControlling)
         {
             if (GameFlow.turn == GameFlow.Turn.Attacker)
             {
@@ -45,7 +47,7 @@ public class CueSwitcher : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && !TopView.isViewing && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && !TopView.isViewing && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0 && !aiController.isControlling)
         {
             if (GameFlow.turn == GameFlow.Turn.Attacker)
             {

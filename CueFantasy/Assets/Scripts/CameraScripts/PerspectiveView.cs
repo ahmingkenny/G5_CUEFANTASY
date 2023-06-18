@@ -21,6 +21,8 @@ public class PerspectiveView : MonoBehaviour
     public static bool isRecording = true;
     public static bool isSelectLerp = false;
 
+    private AIController aiController;
+
     void Awake()
     {
         Reset();
@@ -32,6 +34,7 @@ public class PerspectiveView : MonoBehaviour
         ResetCameraPosition();
         targetPosition = this.transform.position;
         originalDistance = Vector3.Distance(CueBall.transform.position, this.transform.position);
+        aiController = GameObject.Find("GameManager").GetComponent<AIController>();
     }
 
     void Update()
@@ -57,7 +60,7 @@ public class PerspectiveView : MonoBehaviour
                 originalPosition = this.transform.position;
             }
 
-            if (Input.GetKeyUp(KeyCode.Tab) && !TopView.isSelecting && !TopView.isViewing && !isSelectLerp && !isLerping && !BallShooter.isShoot)
+            if (Input.GetKeyUp(KeyCode.Tab) && !TopView.isSelecting && !TopView.isViewing && !isSelectLerp && !isLerping && !BallShooter.isShoot && !aiController.isControlling)
             {
                 isLerping = true;
             }
@@ -80,36 +83,36 @@ public class PerspectiveView : MonoBehaviour
                 isRecording = true; //start record position when camera arrives to the expected position.
             }
 
-            if (!Input.GetKey(KeyCode.Tab) && !isLerping && !isSelectLerp && !TopView.isViewing)
+            if (!Input.GetKey(KeyCode.Tab) && !isLerping && !isSelectLerp && !TopView.isViewing && !aiController.isControlling)
             {
                 GameObject CueBall = GameObject.FindGameObjectWithTag("CueBall");
 
-                if (Input.GetKey(KeyCode.A) && !TopView.isViewing && BallShooter.isShoot == false)
+                if (Input.GetKey(KeyCode.A) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
                 {
                     TurnLeft();
                 }
 
-                if (Input.GetKey(KeyCode.D) && !TopView.isViewing && BallShooter.isShoot == false)
+                if (Input.GetKey(KeyCode.D) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
                 {
                     TurnRight();
                 }
 
-                if (Input.GetAxis("Mouse ScrollWheel") > 0)
+                if (Input.GetAxis("Mouse ScrollWheel") > 0 && !aiController.isControlling)
                 {
                     ZoomIn();
                 }
 
-                if (Input.GetAxis("Mouse ScrollWheel") < 0)
+                if (Input.GetAxis("Mouse ScrollWheel") < 0 && !aiController.isControlling)
                 {
                     ZoomOut();
                 }
 
-                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) && !aiController.isControlling)
                 {
                     isAiming = false;
                 }
 
-                if (Input.GetKey(KeyCode.R) && !TopView.isViewing && BallShooter.isShoot == false)
+                if (Input.GetKey(KeyCode.R) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
                 {
                     ResetCameraPosition();
                 }
@@ -176,13 +179,13 @@ public class PerspectiveView : MonoBehaviour
         isAiming = false;
     }
 
-    private void TurnLeft()
+    public void TurnLeft()
     {
         isAiming = true;
         this.transform.Translate(new Vector3(moveSpeed, 0, 0) * Time.deltaTime, Space.Self);
     }
 
-    private void TurnRight()
+    public void TurnRight()
     {
         isAiming = true;
         this.transform.Translate(new Vector3(-moveSpeed, 0, 0) * Time.deltaTime, Space.Self);

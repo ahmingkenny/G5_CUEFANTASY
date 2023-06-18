@@ -14,6 +14,7 @@ public class CueBallFollower : MonoBehaviour
     public static bool isFollowing = false;
 
     private Slider powerSlider;
+    private AIController aiController;
 
     void Awake()
     {
@@ -23,26 +24,18 @@ public class CueBallFollower : MonoBehaviour
     void Start()
     {
         powerSlider = GameObject.FindGameObjectWithTag("PowerSlider").GetComponent<Slider>();
+        aiController = GameObject.Find("GameManager").GetComponent<AIController>();
     }
 
     void Update()
     {
         GameObject CueBall = GameObject.FindGameObjectWithTag("CueBall");
 
-        if (Input.GetKeyDown(KeyCode.Tab) && !TopView.isViewing && !TopView.isSelecting && !PerspectiveView.isSelectLerp && !BallShooter.isShooting && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0)
+        if (Input.GetKeyDown(KeyCode.Tab) && !TopView.isViewing && !TopView.isSelecting && !PerspectiveView.isSelectLerp && !BallShooter.isShooting && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0 && !aiController.isControlling)
         {
             GameObject Cue = GameObject.FindGameObjectWithTag("Cue");
 
-            if (!isFollowing)
-            {
-                isFollowing = true;
-                Cue.GetComponent<CueBehaviour>().TakeCueOut();
-            }
-            else
-            {
-                isFollowing = false;
-                Cue.GetComponent<CueBehaviour>().PutCueDown();
-            }
+            SwitchFollowing();
 
         }
 
@@ -58,7 +51,7 @@ public class CueBallFollower : MonoBehaviour
                 this.transform.position = Vector3.Lerp(this.transform.position, CueBall.transform.position, camSpeed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W) && !aiController.isControlling)
             {
                 if (this.transform.position.y - CueBall.transform.position.y < maxCamHeight) //camera height control.
                 {
@@ -66,7 +59,7 @@ public class CueBallFollower : MonoBehaviour
                 }
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) && !aiController.isControlling)
             {
                 if (this.transform.position.y - CueBall.transform.position.y > minCamHeight) //camerea height control.
                 {
@@ -86,6 +79,22 @@ public class CueBallFollower : MonoBehaviour
     public void Reset()
     {
         isFollowing = false;
+    }
+
+    public void SwitchFollowing()
+    {
+        GameObject Cue = GameObject.FindGameObjectWithTag("Cue");
+
+        if (!isFollowing)
+        {
+            isFollowing = true;
+            Cue.GetComponent<CueBehaviour>().TakeCueOut();
+        }
+        else
+        {
+            isFollowing = false;
+            Cue.GetComponent<CueBehaviour>().PutCueDown();
+        }
     }
 
 }

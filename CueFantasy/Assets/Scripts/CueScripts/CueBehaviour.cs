@@ -21,12 +21,14 @@ public class CueBehaviour : MonoBehaviour, IDestroyable
     protected AbilityCaster abilityCaster;
     protected GameObject NoticeBoard;
     protected NoticeBoard noticeBoard;
+    private AIController aiController;
 
     [Header("Audio")]
     [SerializeField] private AudioClip DrawSound;
 
     void Start()
     {
+        aiController = GameObject.Find("GameManager").GetComponent<AIController>();
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         cueBallFollower = MainCamera.GetComponent<CueBallFollower>();
         anim = GetComponent<Animator>();
@@ -44,22 +46,32 @@ public class CueBehaviour : MonoBehaviour, IDestroyable
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && !aiController.isControlling)
         {
-            anim.SetBool("isCharging", true);
+            Charging();
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) && !aiController.isControlling)
         {
-            anim.SetBool("isCharging", false);
-            anim.SetBool("isSwing", true);
+            Swing();
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse1))
+        if (Input.GetKeyUp(KeyCode.Mouse1) && !aiController.isControlling)
         {
             anim.SetTrigger("Dance");
 
         }
+    }
+
+    public void Charging()
+    {
+        anim.SetBool("isCharging", true);
+    }
+
+    public void Swing()
+    {
+        anim.SetBool("isCharging", false);
+        anim.SetBool("isSwing", true);
     }
 
     private void AdjustPosition()

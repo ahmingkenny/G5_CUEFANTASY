@@ -19,5 +19,18 @@ public class MapLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Scene3");
     }
+    public void LoadScene1AI()
+    {
+        SceneManager.LoadScene("Scene1AI");
+    }
 
+    public void LoadScene2AI()
+    {
+        SceneManager.LoadScene("Scene2AI");
+    }
+
+    public void LoadScene3AI()
+    {
+        SceneManager.LoadScene("Scene3AI");
+    }
 }

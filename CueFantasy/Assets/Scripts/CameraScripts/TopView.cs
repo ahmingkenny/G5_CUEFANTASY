@@ -18,6 +18,7 @@ public class TopView : MonoBehaviour
     [Header("Reference")]
     private GameObject CueBall;
     private CueBallBehaviour cueBallBehaviour;
+    private AIController aiController;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class TopView : MonoBehaviour
         cueBallBehaviour = CueBall.GetComponent<CueBallBehaviour>();
         GameObject worldCenter = GameObject.FindGameObjectWithTag("WorldCenter");
         targetPosition = new Vector3(worldCenter.transform.position.x, camHeight, worldCenter.transform.position.z);
+        aiController = GameObject.Find("GameManager").GetComponent<AIController>();
 
         layer_mask = LayerMask.GetMask("InvisibleWall", "Ability");
     }
@@ -39,7 +41,7 @@ public class TopView : MonoBehaviour
         if (!CueBallFollower.isFollowing && !isSelecting && !PerspectiveView.isAiming && !BallShooter.isShoot && !Input.GetKey(KeyCode.Tab) && CueBall.GetComponent<Rigidbody>().velocity.y == 0)
         {
 
-            if (Input.GetKeyUp(KeyCode.F) && !PerspectiveView.isLerping && !PerspectiveView.isSelectLerp)
+            if (Input.GetKeyUp(KeyCode.F) && !PerspectiveView.isLerping && !PerspectiveView.isSelectLerp && !aiController.isControlling)
             {
                 isViewing = isViewing == false ? true : false;
                 PerspectiveView.isLerping = isViewing == false ? true : false; //turn on isLerping to return to the original camera position before roaming, and recording of camera position will be ture after lerping in PerspectiveView
@@ -65,24 +67,41 @@ public class TopView : MonoBehaviour
             if (Input.GetButtonUp("Fire1"))
             {
 
-                RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit, 10f, ~layer_mask))
-                {
-
-                    if (hit.collider.CompareTag("Terrain"))
-                    {
-                        cueBallBehaviour.SetBallPosition(hit.point);
-                        isSelecting = false;
-                        isViewing = false;
-                    }
-
-                }
+                ChoosePosition(ray);
 
             }
 
         }
+
+    }
+
+    public void ChoosePosition(Ray ray)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 10f, ~layer_mask))
+        {
+
+            if (hit.collider.CompareTag("Terrain"))
+            {
+                cueBallBehaviour.SetBallPosition(hit.point);
+                isSelecting = false;
+                isViewing = false;
+            }
+
+        }
+    }
+
+    public void ChoosePosition(Vector3 targetPosition)
+    {
+            if (isSelecting)
+            {
+                cueBallBehaviour.SetBallPosition(targetPosition);
+            }
+                isSelecting = false;
+                isViewing = false;
 
     }
 

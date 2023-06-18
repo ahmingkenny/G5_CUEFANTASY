@@ -23,6 +23,9 @@ public class BallShooter : MonoBehaviour
     public static bool isShooting = false;
     public static bool isShoot = false;
 
+    [Header("Game Reference")]
+    private AIController aiController;
+
     [Header("UI Reference")]
     private Image TopSpinMap;
     private Image BackSpinMap;
@@ -61,12 +64,14 @@ public class BallShooter : MonoBehaviour
 
         layer_mask = LayerMask.GetMask("CueBall");
 
+        aiController = GameObject.Find("GameManager").GetComponent<AIController>();
+
     }
 
     void Update()
     {
 
-        if (CueBallFollower.isFollowing)
+        if (CueBallFollower.isFollowing && !aiController.isControlling)
         {
 
             if (Input.GetKeyUp(KeyCode.Q))
@@ -118,7 +123,7 @@ public class BallShooter : MonoBehaviour
         power = value;
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         abilityCaster = MainCamera.GetComponent<AbilityCaster>();
 

@@ -10,9 +10,13 @@ public class GameFlow : MonoBehaviour
     public int turnNum;
     public bool isNextTurn = false;
     public bool isEnd = false;
+    public bool isAIActived = true;
+    public bool weaponIsSelected = false;
 
     public enum Turn { Attacker, Defender};
     public static Turn turn;
+    public enum AISide { Attacker, Defender };
+    [SerializeField] public AISide aiSide;
 
     private Vector3 cueBallPos;
 
@@ -28,6 +32,7 @@ public class GameFlow : MonoBehaviour
     private Defender defender;
     private AbilityCaster abiliterCaster;
     private RandomEventSystem randomEventSystem;
+    private AIController aIController;
 
     [Header("UI Reference")]
     private Image DefIcon;
@@ -66,6 +71,7 @@ public class GameFlow : MonoBehaviour
         attacker = GetComponent<Attacker>();
         defender = GetComponent<Defender>();
         randomEventSystem = GetComponent<RandomEventSystem>();
+        aIController = GetComponent<AIController>();
 
         DefIcon = GameObject.Find("DefIcon").GetComponent<Image>();
         AtkIcon = GameObject.Find("AtkIcon").GetComponent<Image>();
@@ -95,8 +101,14 @@ public class GameFlow : MonoBehaviour
             cueBallPos = CueBall.transform.position;
         }
 
-        if (turnNum != 0 && turnNum % 2 != 0 && turnNum <= turnLimit && isNextTurn && !BallShooter.isShoot)
+        if (turnNum != 0 && turnNum % 2 != 0 && turnNum <= turnLimit && isNextTurn && !BallShooter.isShoot && weaponIsSelected)
         {
+
+            if (isAIActived && aiSide == AISide.Attacker)
+            {
+                aIController.ActiveAIController();
+            }
+
             if (!TopView.isSelecting)
             {
                 noticeBoard.ShowAttackerTurn();
@@ -115,8 +127,13 @@ public class GameFlow : MonoBehaviour
             isNextTurn = false;
             perspectiveView.ResetCameraPosition();
         }
-        else if (turnNum != 0 && turnNum % 2 == 0 && turnNum <= turnLimit && isNextTurn && !BallShooter.isShoot)
+        else if (turnNum != 0 && turnNum % 2 == 0 && turnNum <= turnLimit && isNextTurn && !BallShooter.isShoot && weaponIsSelected)
         {
+            if (isAIActived && aiSide == AISide.Defender)
+            {
+                aIController.ActiveAIController();
+            }
+
             if (!TopView.isSelecting)
             {
                 noticeBoard.ShowDefenderTurn();
@@ -187,6 +204,11 @@ public class GameFlow : MonoBehaviour
 
         }
 
+    }
+
+    public void WeaponIsSelected()
+    {
+        weaponIsSelected = true;
     }
 
     private void ShowEvent()
