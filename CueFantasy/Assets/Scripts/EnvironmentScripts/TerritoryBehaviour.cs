@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TerritoryBehaviour : MonoBehaviour
 {
-    private enum Faction { Attacker, Defender, Neutral};
+    public enum Faction { Attacker, Defender, Neutral};
     private enum BaseType { Main, Sub};
 
     Color red = new Color(1f, 0.15f, 0f, 0.1f);
@@ -12,7 +12,7 @@ public class TerritoryBehaviour : MonoBehaviour
     Color purple = new Color(1f, 0f, 0.7f, 0.1f);
 
     [Header("Info")]
-    [SerializeField] private Faction faction;
+    [SerializeField] public Faction faction;
     [SerializeField] private BaseType baseType;
 
     [Header("FX")]

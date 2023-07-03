@@ -7,6 +7,7 @@ public class BallShooter : MonoBehaviour
 {
     private float range = 3f;
     [SerializeField] private float power = 0.3f;
+    bool turnoffFollowing = false;
 
     private GameObject MainCamera;
     private AbilityCaster abilityCaster;
@@ -68,6 +69,14 @@ public class BallShooter : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if (turnoffFollowing)
+        {
+            CueBallFollower.isFollowing = false;
+            turnoffFollowing = false;
+        }
+    }
     void Update()
     {
 
@@ -86,13 +95,13 @@ public class BallShooter : MonoBehaviour
                 soundPlayer.PlayNormalButtonSound();
             }
 
-            if (Input.GetKeyUp(KeyCode.D))
+            if (Input.GetKeyUp(KeyCode.C))
             {
                 SwitchToLeftSpin();
                 soundPlayer.PlayNormalButtonSound();
             }
 
-            if (Input.GetKeyUp(KeyCode.A))
+            if (Input.GetKeyUp(KeyCode.Z))
             {
                 SwitchToRightSpin();
                 soundPlayer.PlayNormalButtonSound();
@@ -141,7 +150,7 @@ public class BallShooter : MonoBehaviour
                 Instantiate(SparksFX, hit.point, Quaternion.identity);
                 isShoot = true;
                 PerspectiveView.isLerping = true;
-                CueBallFollower.isFollowing = false;
+                turnoffFollowing = true;
                 GameObject Cue = GameObject.FindGameObjectWithTag("Cue");
                 Cue.GetComponent<CueBehaviour>().PutCueDown();
                 abilityCaster.isCasting = false;

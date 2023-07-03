@@ -9,6 +9,7 @@ public class PerspectiveView : MonoBehaviour
     [SerializeField] private float minZoomPos = 0.8f;
     [SerializeField] private float maxZoomPos = 2f;
     [SerializeField] private float moveSpeed = 1.5f;
+    [SerializeField] private float microMoveSpeed = 0.5f;
 
     private Vector3 standardCamDis = new Vector3(0, 1.6f, -1.6f);
 
@@ -47,6 +48,8 @@ public class PerspectiveView : MonoBehaviour
 
         if (!CueBallFollower.isFollowing)
         {
+
+            CueBallFollower.isJumpBallMode = false;
 
             if (!TopView.isViewing)
             {
@@ -87,14 +90,24 @@ public class PerspectiveView : MonoBehaviour
             {
                 GameObject CueBall = GameObject.FindGameObjectWithTag("CueBall");
 
-                if (Input.GetKey(KeyCode.A) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
                 {
                     TurnLeft();
                 }
 
-                if (Input.GetKey(KeyCode.D) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
                 {
                     TurnRight();
+                }
+
+                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                {
+                    MicroTurnLeft();
+                }
+
+                if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                {
+                    MicroTurnRight();
                 }
 
                 if (Input.GetAxis("Mouse ScrollWheel") > 0 && !aiController.isControlling)
@@ -185,12 +198,22 @@ public class PerspectiveView : MonoBehaviour
         this.transform.Translate(new Vector3(moveSpeed, 0, 0) * Time.deltaTime, Space.Self);
     }
 
+    public void MicroTurnLeft()
+    {
+        isAiming = true;
+        this.transform.Translate(new Vector3(microMoveSpeed, 0, 0) * Time.deltaTime, Space.Self);
+    }
+
     public void TurnRight()
     {
         isAiming = true;
         this.transform.Translate(new Vector3(-moveSpeed, 0, 0) * Time.deltaTime, Space.Self);
     }
-
+    public void MicroTurnRight()
+    {
+        isAiming = true;
+        this.transform.Translate(new Vector3(-microMoveSpeed, 0, 0) * Time.deltaTime, Space.Self);
+    }
     public void Reset()
     {
         isLerping = false;

@@ -3,7 +3,9 @@ guid: 619daa014a5a3cc46ad2cf9d718e0c06
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - OriginalBallPhysicMat: {fileID: 13400000, guid: 0e4def003c7eb6b4f80962cb7fa27e1e, type: 2}
+  - JumpBallPhysicMat: {fileID: 13400000, guid: 48df8e75dba87aa42996261d12562ac4, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

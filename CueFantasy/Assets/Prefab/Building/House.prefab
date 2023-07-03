@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7742138800667818383}
   - component: {fileID: 370339578925527184}
   - component: {fileID: 1815838911199994872}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Box003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 848432609502404700}
   - component: {fileID: 8423009561748743135}
   - component: {fileID: 7756911326764323834}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Box002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7085432610602867991}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 8134125892635523461}
   - component: {fileID: 3110665898877514782}
   - component: {fileID: 4425870715846900907}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Pyramid001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 3787951968012638796}
   - component: {fileID: 707642073000106701}
   - component: {fileID: 5369654756939426124}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Box008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
