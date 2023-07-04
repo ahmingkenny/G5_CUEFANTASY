@@ -80,7 +80,6 @@ MonoBehaviour:
   cameraOffset: {x: 0.4, y: -0.5, z: 0.7}
   rotation: {x: 45, y: -15, z: 45}
   DrawSound: {fileID: 8300000, guid: c755bb37bf5f1204389d76f675187893, type: 3}
-  DanceSound: {fileID: 8300000, guid: d04e200d9a720b348b2c16f5a5c8c428, type: 3}
 --- !u!114 &6584009453575156394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,10 +95,8 @@ MonoBehaviour:
   cameraOffset: {x: 0.4, y: -0.5, z: 0.7}
   rotation: {x: 45, y: -15, z: 45}
   DrawSound: {fileID: 0}
-  DanceSound: {fileID: 0}
-  cueNum: 3
-  abilityName: "\u5FC3\u5805\u77F3\u7A7F (3)"
-  manaCost: 3
+  abilityName: "\u5FC3\u5805\u77F3\u7A7F (2)"
+  manaCost: 2
   RockColumn: {fileID: 7802868092572204193, guid: a70f84f9983768a4bb7d82fea8e95258, type: 3}
   RockAriseSound: {fileID: 8300000, guid: 08c99060579824a41865ebc428191d1c, type: 3}
 --- !u!95 &8236714694986585748

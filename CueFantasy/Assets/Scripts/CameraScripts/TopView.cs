@@ -19,6 +19,8 @@ public class TopView : MonoBehaviour
     private GameObject CueBall;
     private CueBallBehaviour cueBallBehaviour;
     private AIController aiController;
+    private GameObject GameManager;
+    private GameFlow gameFlow;
 
     void Awake()
     {
@@ -32,6 +34,8 @@ public class TopView : MonoBehaviour
         GameObject worldCenter = GameObject.FindGameObjectWithTag("WorldCenter");
         targetPosition = new Vector3(worldCenter.transform.position.x, camHeight, worldCenter.transform.position.z);
         aiController = GameObject.Find("GameManager").GetComponent<AIController>();
+        GameManager = GameObject.Find("GameManager");
+        gameFlow = GameManager.GetComponent<GameFlow>();
 
         layer_mask = LayerMask.GetMask("InvisibleWall", "Ability");
     }
@@ -41,7 +45,7 @@ public class TopView : MonoBehaviour
         if (!CueBallFollower.isFollowing && !isSelecting && !PerspectiveView.isAiming && !BallShooter.isShoot && !Input.GetKey(KeyCode.Tab) && CueBall.GetComponent<Rigidbody>().velocity.y == 0)
         {
 
-            if (Input.GetKeyUp(KeyCode.F) && !PerspectiveView.isLerping && !PerspectiveView.isSelectLerp && !aiController.isControlling)
+            if (Input.GetKeyUp(KeyCode.F) && !PerspectiveView.isLerping && !PerspectiveView.isSelectLerp && !aiController.isControlling && gameFlow.weaponIsSelected)
             {
                 isViewing = isViewing == false ? true : false;
                 PerspectiveView.isLerping = isViewing == false ? true : false; //turn on isLerping to return to the original camera position before roaming, and recording of camera position will be ture after lerping in PerspectiveView

@@ -12,6 +12,8 @@ public class EndGameMenu : MonoBehaviour
     private GameObject GameManager;
     private GameFlow gameFlow;
     private SoundPlayer soundPlayer;
+    [SerializeField] bool isLose;
+    [SerializeField] bool isTutorial;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,12 +28,24 @@ public class EndGameMenu : MonoBehaviour
         gameFlow = GameManager.GetComponent<GameFlow>();
         gameFlow.isEnd = true;
         soundPlayer = GameManager.GetComponent<SoundPlayer>();
-        soundPlayer.PlayEndGameSound();
+        if (!isLose)
+        {
+            soundPlayer.PlayEndGameSound();
+        }
+        else
+        {
+            soundPlayer.PlayLoseSound();
+        }
     }
 
     public void ShowAttackerWin()
     {
-        text.text = "進攻方獲勝";
+        if (isTutorial)
+        {
+            text.text = "教學模式完成";
+        }
+        else
+            text.text = "進攻方獲勝";
         Time.timeScale = 0;
     }
 
@@ -46,4 +60,9 @@ public class EndGameMenu : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }

@@ -114,8 +114,8 @@ MonoBehaviour:
   cameraOffset: {x: 0.4, y: -0.5, z: 0.7}
   rotation: {x: 45, y: -15, z: 45}
   DrawSound: {fileID: 0}
-  abilityName: "\u7121\u5805\u4E0D\u6467 (2)"
-  manaCost: 2
+  abilityName: "\u7121\u5805\u4E0D\u6467 (1)"
+  manaCost: 1
   power: 2
   BattleCrySound: {fileID: 8300000, guid: f59adfa07e67f574bb2f4cf88abb90d1, type: 3}
 --- !u!1001 &3036029401969815262

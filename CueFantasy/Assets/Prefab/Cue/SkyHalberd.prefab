@@ -263,8 +263,8 @@ MonoBehaviour:
   cameraOffset: {x: 0.4, y: -0.5, z: 0.7}
   rotation: {x: 45, y: -15, z: 45}
   DrawSound: {fileID: 0}
-  abilityName: "\u5F04\u55A7\u6417\u9B3C (8)"
-  manaCost: 8
+  abilityName: "\u5F04\u55A7\u6417\u9B3C (6)"
+  manaCost: 6
   Fog: {fileID: 1735024089641582, guid: 378b2c30ef426554495292cb902cb8f4, type: 3}
   LaughSound: {fileID: 8300000, guid: 3832750980c190445878a623b3729b89, type: 3}
 --- !u!95 &8669348934985493697

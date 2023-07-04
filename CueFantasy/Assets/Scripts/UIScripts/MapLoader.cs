@@ -33,4 +33,25 @@ public class MapLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Scene3AI");
     }
+
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LoadTutorialScene1()
+    {
+        SceneManager.LoadScene("TutorialScene1");
+    }
+
+    public void LoadTutorialScene2()
+    {
+        SceneManager.LoadScene("TutorialScene2");
+    }
+
+    public void LoadTutorialScene3()
+    {
+        SceneManager.LoadScene("TutorialScene3");
+    }
+
 }

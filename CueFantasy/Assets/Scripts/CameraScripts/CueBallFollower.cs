@@ -21,6 +21,8 @@ public class CueBallFollower : MonoBehaviour
     private Slider powerSlider;
     private AIController aiController;
     private PerspectiveView perspectiveView;
+    private GameObject GameManager;
+    private GameFlow gameFlow;
 
     void Awake()
     {
@@ -32,13 +34,15 @@ public class CueBallFollower : MonoBehaviour
         powerSlider = GameObject.FindGameObjectWithTag("PowerSlider").GetComponent<Slider>();
         aiController = GameObject.Find("GameManager").GetComponent<AIController>();
         perspectiveView = GetComponent<PerspectiveView>();
+        GameManager = GameObject.Find("GameManager");
+        gameFlow = GameManager.GetComponent<GameFlow>();
     }
 
     void Update()
     {
         GameObject CueBall = GameObject.FindGameObjectWithTag("CueBall");
 
-        if (Input.GetKeyDown(KeyCode.Tab) && !TopView.isViewing && !TopView.isSelecting && !PerspectiveView.isSelectLerp && !BallShooter.isShooting && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0 && !aiController.isControlling)
+        if (Input.GetKeyDown(KeyCode.Tab) && !TopView.isViewing && !TopView.isSelecting && !PerspectiveView.isSelectLerp && !PerspectiveView.isLerping && !BallShooter.isShooting && !BallShooter.isShoot && CueBall.GetComponent<Rigidbody>().velocity.z == 0 && !aiController.isControlling && gameFlow.weaponIsSelected)
         {
             GameObject Cue = GameObject.FindGameObjectWithTag("Cue");
 

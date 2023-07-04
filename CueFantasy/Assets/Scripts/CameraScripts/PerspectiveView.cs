@@ -23,6 +23,8 @@ public class PerspectiveView : MonoBehaviour
     public static bool isSelectLerp = false;
 
     private AIController aiController;
+    private GameObject GameManager;
+    private GameFlow gameFlow;
 
     void Awake()
     {
@@ -36,6 +38,8 @@ public class PerspectiveView : MonoBehaviour
         targetPosition = this.transform.position;
         originalDistance = Vector3.Distance(CueBall.transform.position, this.transform.position);
         aiController = GameObject.Find("GameManager").GetComponent<AIController>();
+        GameManager = GameObject.Find("GameManager");
+        gameFlow = GameManager.GetComponent<GameFlow>();
     }
 
     void Update()
@@ -90,42 +94,42 @@ public class PerspectiveView : MonoBehaviour
             {
                 GameObject CueBall = GameObject.FindGameObjectWithTag("CueBall");
 
-                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     TurnLeft();
                 }
 
-                if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     TurnRight();
                 }
 
-                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     MicroTurnLeft();
                 }
 
-                if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     MicroTurnRight();
                 }
 
-                if (Input.GetAxis("Mouse ScrollWheel") > 0 && !aiController.isControlling)
+                if (Input.GetAxis("Mouse ScrollWheel") > 0 && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     ZoomIn();
                 }
 
-                if (Input.GetAxis("Mouse ScrollWheel") < 0 && !aiController.isControlling)
+                if (Input.GetAxis("Mouse ScrollWheel") < 0 && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     ZoomOut();
                 }
 
-                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) && !aiController.isControlling)
+                if ((Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)) && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     isAiming = false;
                 }
 
-                if (Input.GetKey(KeyCode.R) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling)
+                if (Input.GetKey(KeyCode.R) && !TopView.isViewing && BallShooter.isShoot == false && !aiController.isControlling && gameFlow.weaponIsSelected)
                 {
                     ResetCameraPosition();
                 }

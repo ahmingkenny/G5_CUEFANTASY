@@ -95,8 +95,8 @@ MonoBehaviour:
   cameraOffset: {x: 0.4, y: -0.5, z: 0.7}
   rotation: {x: 45, y: -15, z: 45}
   DrawSound: {fileID: 0}
-  abilityName: "\u62BD\u85AA\u6B62\u6CB8 (4)"
-  manaCost: 4
+  abilityName: "\u62BD\u85AA\u6B62\u6CB8 (3)"
+  manaCost: 3
   Disableizer: {fileID: 3376780187305117099, guid: 77ed66d2c2b75fd4ea4954d039786d3d, type: 3}
   DisablizeSound: {fileID: 8300000, guid: da4cdf826524c614e8bfc2ab2ec59d76, type: 3}
 --- !u!95 &5586484151973003239

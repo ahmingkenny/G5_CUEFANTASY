@@ -68,7 +68,6 @@ MonoBehaviour:
   cameraOffset: {x: 0.4, y: -0.5, z: 0.7}
   rotation: {x: 45, y: -15, z: 45}
   DrawSound: {fileID: 8300000, guid: c755bb37bf5f1204389d76f675187893, type: 3}
-  DanceSound: {fileID: 8300000, guid: d04e200d9a720b348b2c16f5a5c8c428, type: 3}
 --- !u!114 &2993189924526281446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,10 +83,8 @@ MonoBehaviour:
   cameraOffset: {x: 0.4, y: -0.5, z: 0.7}
   rotation: {x: 45, y: -15, z: 45}
   DrawSound: {fileID: 0}
-  DanceSound: {fileID: 0}
-  cueNum: 1
-  abilityName: "\u731B\u864E\u8FFD\u98A8 (4)"
-  manaCost: 4
+  abilityName: "\u731B\u864E\u8FFD\u98A8 (3)"
+  manaCost: 3
   TigerSlash: {fileID: 7957914750934959910, guid: 791c0d065fbb504429bc8f6b3ad0eef7, type: 3}
   SlashSound: {fileID: 8300000, guid: b5e1d11634b054e458d7afd87d6f530b, type: 3}
   TigerSound: {fileID: 8300000, guid: d8e8a1b936e3fe249811c45545e1275c, type: 3}

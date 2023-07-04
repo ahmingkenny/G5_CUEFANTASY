@@ -40,7 +40,7 @@ public class AbilityCaster : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 10f, ~layer_mask))
                 {
 
-                    if (hit.collider.CompareTag("Terrain") && hit.collider.gameObject.name != "AbilityButton")
+                    if ((hit.collider.CompareTag("Terrain") || hit.collider.CompareTag("TutorialStage")) && hit.collider.gameObject.name != "AbilityButton")
                     {
                         GameObject Cue = GameObject.FindGameObjectWithTag("Cue");
                         Cue.GetComponent<IAbility>().CastAbility(hit.point);

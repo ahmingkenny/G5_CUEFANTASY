@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene3AI.unity
     guid: dd0e5871ea9d5224fb82f711b05a35f5
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene1.unity
+    guid: 8c3b4a877ab4df54280eafcb1e332db0
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene2.unity
+    guid: 1b177a01ead83b7478f54da1564b67e1
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene3.unity
+    guid: f4aa65bace1f9e34aa7134ff0b39a5a3
   m_configObjects: {}

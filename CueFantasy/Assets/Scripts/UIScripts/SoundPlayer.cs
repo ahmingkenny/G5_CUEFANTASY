@@ -9,6 +9,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioClip BattleStartSound;
     [SerializeField] private AudioClip EndGameSound;
     [SerializeField] private AudioClip MapOpenSound;
+    [SerializeField] private AudioClip LoseSound;
 
     private AudioSource audioSource;
 
@@ -45,6 +46,12 @@ public class SoundPlayer : MonoBehaviour
     {
         AudioSource audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(MapOpenSound);
+    }
+
+    public void PlayLoseSound()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(LoseSound);
     }
 
 }
