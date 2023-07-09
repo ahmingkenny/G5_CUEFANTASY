@@ -40,6 +40,7 @@ public class PerspectiveView : MonoBehaviour
         aiController = GameObject.Find("GameManager").GetComponent<AIController>();
         GameManager = GameObject.Find("GameManager");
         gameFlow = GameManager.GetComponent<GameFlow>();
+
     }
 
     void Update()

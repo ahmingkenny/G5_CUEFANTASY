@@ -10,8 +10,10 @@ public class GameFlow : MonoBehaviour
     public int turnNum;
     public bool isNextTurn = false;
     public bool isEnd = false;
-    public bool isAIActived = true;
+    [SerializeField] public bool isAIActived;
+    [SerializeField] public bool isSiegeMode;
     public bool weaponIsSelected = false;
+    private int resourcePerTurn = 100;
 
     public enum Turn { Attacker, Defender};
     public static Turn turn;
@@ -28,6 +30,7 @@ public class GameFlow : MonoBehaviour
     private CueSpawner cueSpawner;
     private GameObject CueBall;
     private CueBallBehaviour cueBallBehaviour;
+    private CueBallFollower cueBallFollower;
     private Attacker attacker;
     private Defender defender;
     private AbilityCaster abiliterCaster;
@@ -51,6 +54,8 @@ public class GameFlow : MonoBehaviour
     private SliderBehaviour sliderBehaviour;
     private GameObject BattleReporter;
     private BattleReporter battleReporter;
+    private FenceBuilding fenceBuilding;
+    private AbilityCaster abilityCaster;
 
     void Awake()
     {
@@ -72,6 +77,9 @@ public class GameFlow : MonoBehaviour
         defender = GetComponent<Defender>();
         randomEventSystem = GetComponent<RandomEventSystem>();
         aIController = GetComponent<AIController>();
+        cueBallFollower = MainCamera.GetComponent<CueBallFollower>();
+        fenceBuilding = MainCamera.GetComponent<FenceBuilding>();
+        abilityCaster = MainCamera.GetComponent<AbilityCaster>();
 
         DefIcon = GameObject.Find("DefIcon").GetComponent<Image>();
         AtkIcon = GameObject.Find("AtkIcon").GetComponent<Image>();
@@ -92,6 +100,11 @@ public class GameFlow : MonoBehaviour
 
         isNextTurn = true;
         turn = Turn.Attacker;
+
+        if (isSiegeMode)
+        {
+            CueBallFollower.isFollowing = true;
+        }
     }
 
     void Update()
@@ -108,6 +121,14 @@ public class GameFlow : MonoBehaviour
             {
                 aIController.ActiveAIController();
             }
+            else
+            {
+                GameObject Text = GameObject.Find("AITurnCover").transform.Find("Text").gameObject;
+                Text.GetComponent<Text>().enabled = false;
+                GameObject aiTurnCover = GameObject.Find("AITurnCover");
+                aiTurnCover.GetComponent<Image>().enabled = false;
+                
+            }
 
             if (!TopView.isSelecting)
             {
@@ -115,15 +136,25 @@ public class GameFlow : MonoBehaviour
             }
             turnTextSwitch.UpdateTurnText();
             sliderBehaviour.ResetValue();
-            attacker.GainMana();
+            GameObject.Find("Canvas").transform.Find("InternalAffairsPanel").gameObject.SetActive(false);
+            GameObject.Find("Canvas").transform.Find("GameBook").gameObject.SetActive(false);
+            for (int i = 0; i < attacker.manaPerTurn; i++)
+            {
+                attacker.GainMana();
+            }
+            attacker.GainPoint();
+            attacker.GainResource(resourcePerTurn);
+            abilityCaster.isCasting = false;
+            fenceBuilding.isBuilding = false;
             DefIcon.enabled = false;
             AtkIcon.enabled = true;
             ShowEvent();
-            randomEventSystem.CreateEvent();
+            attacker.RespawnCue();
+            if (!isSiegeMode)
+                randomEventSystem.CreateEvent();
             emberColorSwitch.ChangeToRed();
             fireColorSwitch.ChangeToRed();
             cueBallBehaviour.InitializeData();
-            attacker.RespawnCue();
             isNextTurn = false;
             perspectiveView.ResetCameraPosition();
         }
@@ -133,6 +164,13 @@ public class GameFlow : MonoBehaviour
             {
                 aIController.ActiveAIController();
             }
+            else
+            {
+                GameObject Text = GameObject.Find("AITurnCover").transform.Find("Text").gameObject;
+                Text.GetComponent<Text>().enabled = false;
+                GameObject aiTurnCover = GameObject.Find("AITurnCover");
+                aiTurnCover.GetComponent<Image>().enabled = false;
+            }
 
             if (!TopView.isSelecting)
             {
@@ -140,20 +178,30 @@ public class GameFlow : MonoBehaviour
             }
             turnTextSwitch.UpdateTurnText();
             sliderBehaviour.ResetValue();
-            defender.GainMana();
+            GameObject.Find("Canvas").transform.Find("InternalAffairsPanel").gameObject.SetActive(false);
+            GameObject.Find("Canvas").transform.Find("GameBook").gameObject.SetActive(false);
+            for (int i = 0; i < defender.manaPerTurn; i++)
+            {
+                defender.GainMana();
+            }
+            defender.GainPoint();
+            defender.GainResource(resourcePerTurn);
+            abilityCaster.isCasting = false;
+            fenceBuilding.isBuilding = false;
             AtkIcon.enabled = false;
             DefIcon.enabled = true;
             ShowEvent();
-            randomEventSystem.CreateEvent();
+            defender.RespawnCue();
+            if (!isSiegeMode)
+                randomEventSystem.CreateEvent();
             emberColorSwitch.ChangeToBlue();
             fireColorSwitch.ChangeToBlue();
             cueBallBehaviour.InitializeData();
-            defender.RespawnCue();
             isNextTurn = false;
             perspectiveView.ResetCameraPosition();
         }
 
-        if (BallShooter.isShoot == true && CueBall.transform.position != cueBallPos && CueBall.GetComponent<Rigidbody>().velocity.z == 0 && isEnd == false) // isShoot is for checking whether player has shoot the cue ball or not
+        if (BallShooter.isShoot == true && CueBall.transform.position != cueBallPos && CueBall.GetComponent<Rigidbody>().velocity.z == 0 && isEnd == false && !isSiegeMode) // isShoot is for checking whether player has shoot the cue ball or not
             //Adding cue ball position checking secure turn change mechansim. Velocity checking alone has deviation as ball can be hit and has velocity as 0 at the same time.
         {
             GameObject Cue = GameObject.FindGameObjectWithTag("Cue");

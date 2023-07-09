@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BallShooter : MonoBehaviour
 {
-    private float range = 3f;
+    private float range = 6f;
     [SerializeField] private float power = 0.3f;
     bool turnoffFollowing = false;
 
@@ -13,6 +13,7 @@ public class BallShooter : MonoBehaviour
     private AbilityCaster abilityCaster;
 
     private GameObject GameManager;
+    private GameFlow gameFlow;
     private SoundPlayer soundPlayer;
 
     [Header("Status")]
@@ -66,6 +67,7 @@ public class BallShooter : MonoBehaviour
         layer_mask = LayerMask.GetMask("CueBall");
 
         aiController = GameObject.Find("GameManager").GetComponent<AIController>();
+        gameFlow = GameManager.GetComponent<GameFlow>();
 
     }
 
@@ -122,7 +124,8 @@ public class BallShooter : MonoBehaviour
             }
             else if (power == powerSlider.minValue && Input.GetButtonUp("Fire1"))
             {
-                AudioSource.PlayClipAtPoint(SwingSound, this.transform.position);
+                if (!GameObject.Find("Canvas").transform.Find("GameBook").gameObject.activeSelf && !GameObject.Find("Canvas").transform.Find("InternalAffairsPanel").gameObject.activeSelf && gameFlow.weaponIsSelected)
+                    AudioSource.PlayClipAtPoint(SwingSound, this.transform.position);
             }
         }
     }
@@ -142,17 +145,25 @@ public class BallShooter : MonoBehaviour
         if (Physics.Raycast(ray, out hit, range, layer_mask))
         {
 
-            if (hit.collider.CompareTag("CueBall") && hit.collider.GetComponent<Rigidbody>().velocity.z == 0 && isShoot == false)
+            if (hit.collider.CompareTag("CueBall") && hit.collider.GetComponent<Rigidbody>().velocity.z == 0 && isShoot == false && !gameFlow.isSiegeMode)
             {
                 hit.rigidbody.AddForceAtPosition(ray.direction * power, hit.point, ForceMode.Impulse);
                 AudioSource.PlayClipAtPoint(SwingSound, this.transform.position);
                 AudioSource.PlayClipAtPoint(HitSound, this.transform.position);
                 Instantiate(SparksFX, hit.point, Quaternion.identity);
-                isShoot = true;
-                PerspectiveView.isLerping = true;
-                turnoffFollowing = true;
-                GameObject Cue = GameObject.FindGameObjectWithTag("Cue");
-                Cue.GetComponent<CueBehaviour>().PutCueDown();
+                    isShoot = true;
+                    PerspectiveView.isLerping = true;
+                    turnoffFollowing = true;
+                    GameObject Cue = GameObject.FindGameObjectWithTag("Cue");
+                    Cue.GetComponent<CueBehaviour>().PutCueDown();
+                    abilityCaster.isCasting = false;
+            }
+            else if (hit.collider.CompareTag("CueBall") && isShoot == false && gameFlow.isSiegeMode)
+            {
+                hit.rigidbody.AddForceAtPosition(ray.direction * power, hit.point, ForceMode.Impulse);
+                AudioSource.PlayClipAtPoint(SwingSound, this.transform.position);
+                AudioSource.PlayClipAtPoint(HitSound, this.transform.position);
+                Instantiate(SparksFX, hit.point, Quaternion.identity);
                 abilityCaster.isCasting = false;
             }
         }

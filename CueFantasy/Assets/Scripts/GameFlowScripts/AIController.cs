@@ -279,14 +279,14 @@ public class AIController : MonoBehaviour
 
         }
 
-        GameObject CueBall = GameObject.FindGameObjectWithTag("CueBall");
-        Vector3 ballRelative = CueBall.transform.InverseTransformPoint(closestTerritory.transform.position);
+        GameObject MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        Vector3 cameraRelative = MainCamera.transform.InverseTransformPoint(closestTerritory.transform.position);
 
-        if (ballRelative.x < 0)
+        if (cameraRelative.x < 0)
         {
             cueBallFollower.MicroTurnRight();
         }
-        else if (ballRelative.x > 0)
+        else if (cameraRelative.x > 0)
         {
             cueBallFollower.MicroTurnLeft();
         }
@@ -304,8 +304,8 @@ public class AIController : MonoBehaviour
         isShooting = false;
         isControlling = false;
         isCalled = false;
-        AITurnCover.GetComponent<Image>().enabled = false;
-        Text.GetComponent<Text>().enabled = false;
+        //AITurnCover.GetComponent<Image>().enabled = false;
+        //Text.GetComponent<Text>().enabled = false;
     }
 
 }

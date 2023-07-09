@@ -48,6 +48,27 @@ public class HintsProvider : MonoBehaviour
                                 {
                     noticeBoard.ShowJadeType();
                 }
+                else if (hit.collider.name == "MongoliaHorse")
+                {
+                    noticeBoard.ShowMongoliaHorseType();
+                }
+
+                else if (hit.collider.name == "King")
+                {
+                    noticeBoard.ShowKingType();
+                }
+                else if (hit.collider.name == "Yurt")
+                {
+                    noticeBoard.ShowYurtType();
+                }
+                else if (hit.collider.name == "SiegeBoss")
+                {
+                    noticeBoard.ShowSiegeBossType();
+                }
+                else if (hit.collider.name == "Fence")
+                {
+                    noticeBoard.ShowFenceType();
+                }
             }
         }
     }

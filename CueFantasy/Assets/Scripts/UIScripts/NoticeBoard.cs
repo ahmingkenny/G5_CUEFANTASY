@@ -83,5 +83,73 @@ public class NoticeBoard : MonoBehaviour
         text.text = "玉璽";
     }
 
+    public void ShowMongoliaHorseType()
+    {
+        text.text = "殘黨騎兵";
+    }
+
+    public void ShowKingType()
+    {
+        text.text = "元帥";
+    }
+
+    public void ShowYurtType()
+    {
+        text.text = "最後的斡耳朵";
+    }
+    public void ShowSiegeBossType()
+    {
+        text.text = "成吉思汗的夙願";
+    }
+
+    public void ShowFenceType()
+    {
+        text.text = "防禦欄柵";
+    }
+
+    public void ShowEnhaneManaPerRound()
+    {
+        text.text = "成攻增加每回獲得能量";
+    }
+
+    public void ShowGainMana()
+    {
+        text.text = "成攻換取2點能量";
+    }
+
+    public void ShowGainResource()
+    {
+        text.text = "成攻換取400資源";
+    }
+
+    public void ShowInsufficientPoint()
+    {
+        text.text = "內政點不足";
+    }
+
+    public void ShowInsufficientResource()
+    {
+        text.text = "資源不足";
+    }
+
+    public void ShowSuccessBuild()
+    {
+        text.text = "建設成功";
+    }
+
+    public void ShowAskBuildLocation()
+    {
+        text.text = "正在準備施建設木欄\n按左鍵選擇建設位置\n(按右鍵取消)";
+    }
+
+    public void ShowCancelBuilding()
+    {
+        text.text = "取消建設木欄";
+    }
+
+    public void ShowSuccessMining()
+    {
+        text.text = "成功獲得資源";
+    }
 
 }

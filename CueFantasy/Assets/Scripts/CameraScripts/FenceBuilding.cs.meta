@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3f3cdb8ca7704fc4996fac4420b305d3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Fence: {fileID: 4859264914533730416, guid: 5c64de523c2cec54cbc43dbb034c071b, type: 3}
+  - BuildSound: {fileID: 8300000, guid: 8c2478866cb901643b5003739ce289d0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

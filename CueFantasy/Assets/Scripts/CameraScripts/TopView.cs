@@ -88,7 +88,7 @@ public class TopView : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 10f, ~layer_mask))
         {
 
-            if (hit.collider.CompareTag("Terrain"))
+            if (hit.collider.CompareTag("Terrain") && hit.collider.gameObject.name != "InternalAffairsPanel")
             {
                 cueBallBehaviour.SetBallPosition(hit.point);
                 isSelecting = false;

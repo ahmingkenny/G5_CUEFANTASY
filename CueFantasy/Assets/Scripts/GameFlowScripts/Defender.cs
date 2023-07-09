@@ -9,6 +9,9 @@ public class Defender : MonoBehaviour
     public static int CueNum = 1;
     public static int SecondCueNum = 1;
     public int mana = 0;
+    public int manaPerTurn = 1;
+    public int internalPoint = 0;
+    public int resource = 0;
     public int legalHit = 0;
     public int illegalHit = 0;
     public int foul = 0;
@@ -46,6 +49,12 @@ public class Defender : MonoBehaviour
         SecondCueNum = num;
     }
 
+    public void GainResource(int amount)
+    {
+        resource += amount;
+        UpdateResource();
+    }
+
     public void GainMana()
     {
         if (mana < manaLimit)
@@ -53,6 +62,11 @@ public class Defender : MonoBehaviour
             mana++;
         }
         UpdateManaSlider();
+    }
+    public void GainPoint()
+    {
+        internalPoint++;
+        UpdatePoint();
     }
 
     public void UpdateManaSlider()
@@ -78,6 +92,28 @@ public class Defender : MonoBehaviour
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         cueSpawner = MainCamera.GetComponent<CueSpawner>();
         cueSpawner.RespawnCue(SecondCueNum);
+    }
+
+    public void UpdatePoint()
+    {
+        GameObject.Find("InternalAffairs").GetComponent<Text>().text = "內政點 " + internalPoint;
+    }
+
+    public void UpdateResource()
+    {
+        GameObject.Find("Resources").GetComponent<Text>().text = "資源 " + resource;
+    }
+
+    public void ReducePoint(int amount)
+    {
+        internalPoint -= amount;
+        UpdatePoint();
+    }
+
+    public void ReduceResource(int amount)
+    {
+        resource -= amount;
+        UpdateResource();
     }
 
 }

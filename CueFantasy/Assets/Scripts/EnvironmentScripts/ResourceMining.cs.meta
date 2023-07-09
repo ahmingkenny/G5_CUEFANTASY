@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3bb051b71befae545823bfef6ec584b4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - MiningSound: {fileID: 8300000, guid: cd24bb248b6bab74793e645d8fc16d71, type: 3}
+  - MiningFX: {fileID: 1000011396044746, guid: 0006568a464104c43ab6200f37135e32, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

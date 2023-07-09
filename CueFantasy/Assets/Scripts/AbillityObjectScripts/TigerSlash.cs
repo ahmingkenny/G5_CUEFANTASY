@@ -27,10 +27,11 @@ public class TigerSlash : MonoBehaviour, IDestroyable
                 other.GetComponent<Rigidbody>().AddForceAtPosition(direction.normalized * power, other.ClosestPointOnBounds(transform.position), ForceMode.Impulse);
         }
 
-        if (other.tag == "Destructible")
+        else if (other.tag == "Destructible")
         {
             other.GetComponent<IDamageable>().Hit(damage);
         }
+
 
     }
 

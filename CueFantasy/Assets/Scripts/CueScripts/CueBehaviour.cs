@@ -59,19 +59,22 @@ public class CueBehaviour : MonoBehaviour, IDestroyable
         if (Input.GetKeyUp(KeyCode.Mouse1) && !aiController.isControlling)
         {
             anim.SetTrigger("Dance");
-
         }
     }
 
     public void Charging()
     {
-        anim.SetBool("isCharging", true);
+        if (!GameObject.Find("Canvas").transform.Find("GameBook").gameObject.activeSelf && !GameObject.Find("Canvas").transform.Find("InternalAffairsPanel").gameObject.activeSelf)
+            anim.SetBool("isCharging", true);
     }
 
     public void Swing()
     {
-        anim.SetBool("isCharging", false);
-        anim.SetBool("isSwing", true);
+        if (!GameObject.Find("Canvas").transform.Find("GameBook").gameObject.activeSelf && !GameObject.Find("Canvas").transform.Find("InternalAffairsPanel").gameObject.activeSelf)
+        {
+            anim.SetBool("isCharging", false);
+            anim.SetBool("isSwing", true);
+        }
     }
 
     private void AdjustPosition()

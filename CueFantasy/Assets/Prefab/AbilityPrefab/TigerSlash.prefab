@@ -125,4 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 0.3
-  damage: 15
+  damage: 10

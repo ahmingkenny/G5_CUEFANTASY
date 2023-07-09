@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialScene3.unity
     guid: f4aa65bace1f9e34aa7134ff0b39a5a3
+  - enabled: 1
+    path: Assets/Scenes/SiegeScene1.unity
+    guid: 33d26ef3fadfedd488fc355aa80ed9e6
   m_configObjects: {}

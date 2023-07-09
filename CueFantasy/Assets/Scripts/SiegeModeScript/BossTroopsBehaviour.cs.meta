@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 560e503e4ae95be41abea5bbce7fad38
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - DustExplosionFX: {fileID: 1025285306637258, guid: 8312b9ef4e0e85144926a0f02af11e89, type: 3}
+  - WhipSound: {fileID: 8300000, guid: 1b7418532973edc4c840875506dbd906, type: 3}
+  - HorseSound: {fileID: 8300000, guid: 7e7d78158f810fc479d88baf71382109, type: 3}
+  - TroopsImpactSound: {fileID: 8300000, guid: dabcc5636abbf974380b8e9499e936b1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,6 +12,7 @@ public class CueBallFollower : MonoBehaviour
     [SerializeField] private float minCamHeight = -0.2f;
     [SerializeField] private float maxCamHeight = 0.4f;
     [SerializeField] private float adjustSpeed = 0.1f;
+    [SerializeField] private float superMicroMoveSpeed = 2.5f;
     [SerializeField] private PhysicMaterial OriginalBallPhysicMat;
     [SerializeField] private PhysicMaterial JumpBallPhysicMat;
 
@@ -23,6 +24,8 @@ public class CueBallFollower : MonoBehaviour
     private PerspectiveView perspectiveView;
     private GameObject GameManager;
     private GameFlow gameFlow;
+    private GameObject TransitionCamera;
+    private TransitionCameraBehaviour transitionCameraBehaviour;
 
     void Awake()
     {
@@ -36,6 +39,12 @@ public class CueBallFollower : MonoBehaviour
         perspectiveView = GetComponent<PerspectiveView>();
         GameManager = GameObject.Find("GameManager");
         gameFlow = GameManager.GetComponent<GameFlow>();
+        if (gameFlow.isSiegeMode)
+        {
+            TransitionCamera = GameObject.Find("TransitionCamera");
+            transitionCameraBehaviour = TransitionCamera.GetComponent<TransitionCameraBehaviour>();
+        }
+
     }
 
     void Update()
@@ -69,10 +78,9 @@ public class CueBallFollower : MonoBehaviour
 
             this.transform.LookAt(CueBall.transform.position);
 
-
-            if (Vector3.Distance(this.transform.position, CueBall.transform.position) > minCamDist) //keep the distance between cueball and camera at a range.
+            if (Vector3.Distance(this.transform.position, CueBall.transform.position) != minCamDist) //keep the distance between cueball and camera at a range.
             {
-                this.transform.position = Vector3.Lerp(this.transform.position, CueBall.transform.position, camSpeed * Time.deltaTime);
+                this.transform.position = Vector3.Lerp(this.transform.position, (this.transform.position - CueBall.transform.position).normalized * minCamDist + CueBall.transform.position, camSpeed* Time.deltaTime);
             }
 
             /*if (Input.GetKey(KeyCode.W) && !aiController.isControlling)
@@ -90,33 +98,61 @@ public class CueBallFollower : MonoBehaviour
                     this.transform.Translate(Vector3.down * Time.deltaTime);
                 }
             }*/
-
-            if (Input.GetKey(KeyCode.A) && !aiController.isControlling)
+            if (!gameFlow.isSiegeMode)
             {
-                MicroTurnLeft();
+                if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftShift) && !aiController.isControlling)
+                {
+                    MicroTurnLeft();
+                }
+
+                if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.LeftShift) && !aiController.isControlling)
+                {
+                    MicroTurnRight();
+                }
+
+                if (Input.GetKeyUp(KeyCode.BackQuote) && !aiController.isControlling)
+                {
+                    SwitchToJumpBallMode();
+                }
+
+                if (isJumpBallMode)
+                {
+                    CueBall.GetComponent<Collider>().material = JumpBallPhysicMat;
+                    MaintainJumpBallAngle();
+                }
+
             }
-
-            if (Input.GetKey(KeyCode.D) && !aiController.isControlling)
+            else if (gameFlow.isSiegeMode)
             {
-                MicroTurnRight();
-            }
+                if (transitionCameraBehaviour.isTransited == true)
+                {
+                    if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftShift) && !aiController.isControlling)
+                    {
+                        MicroTurnLeft();
+                    }
 
-            if (Input.GetKeyUp(KeyCode.BackQuote) && !aiController.isControlling)
-            {
-                SwitchToJumpBallMode();
-            }
+                    if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.LeftShift) && !aiController.isControlling)
+                    {
+                        MicroTurnRight();
+                    }
 
-            if (isJumpBallMode)
-            {
-                CueBall.GetComponent<Collider>().material = JumpBallPhysicMat;
-                MaintainJumpBallAngle();
+                    if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift) && !aiController.isControlling)
+                    {
+                        SuperMicroTurnLeft();
+                    }
+
+                    if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift) && !aiController.isControlling)
+                    {
+                        SuperMicroTurnRight();
+                    }
+                }
             }
 
         }
 
         if (!isFollowing)
         {
-            powerSlider.interactable = false;
+                powerSlider.interactable = false;
         }
 
     }
@@ -144,7 +180,8 @@ public class CueBallFollower : MonoBehaviour
         if (!isFollowing)
         {
             isFollowing = true;
-            Cue.GetComponent<CueBehaviour>().TakeCueOut();
+            if (!gameFlow.isSiegeMode)
+                Cue.GetComponent<CueBehaviour>().TakeCueOut();
         }
         else
         {
@@ -174,6 +211,16 @@ public class CueBallFollower : MonoBehaviour
             this.transform.Translate(Vector3.up * Time.deltaTime);
         }
         transform.position = (transform.position - CueBall.transform.position).normalized * minCamDist + CueBall.transform.position;
+    }
+
+    public void SuperMicroTurnLeft()
+    {
+        this.transform.Translate(new Vector3(superMicroMoveSpeed, 0, 0) * Time.deltaTime, Space.Self);
+    }
+
+    public void SuperMicroTurnRight()
+    {
+        this.transform.Translate(new Vector3(-superMicroMoveSpeed, 0, 0) * Time.deltaTime, Space.Self);
     }
 
 }

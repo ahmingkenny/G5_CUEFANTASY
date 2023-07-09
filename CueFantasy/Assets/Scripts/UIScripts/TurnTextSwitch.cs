@@ -11,6 +11,7 @@ public class TurnTextSwitch : MonoBehaviour
     private GameObject GameManager;
     private GameFlow gameFlow;
     private Text text;
+    [SerializeField] private bool isSiegeMode;
 
 
     // Start is called before the first frame update
@@ -35,8 +36,12 @@ public class TurnTextSwitch : MonoBehaviour
             startMonth = 1;
             startYear++;
         }
-
-        text.text = startYear + "年 " + startMonth + "月 " + Random.Range(1, 29) + "日\n剩餘回合: " + (gameFlow.turnLimit - gameFlow.turnNum);
+        if (!isSiegeMode)
+        {
+            text.text = startYear + "年 " + startMonth + "月 " + Random.Range(1, 29) + "日\n剩餘回合: " + (gameFlow.turnLimit - gameFlow.turnNum);
+        }
+        else
+        text.text = startYear + "年 " + startMonth + "月 " + Random.Range(1, 29) + "日";
     }
 
 }

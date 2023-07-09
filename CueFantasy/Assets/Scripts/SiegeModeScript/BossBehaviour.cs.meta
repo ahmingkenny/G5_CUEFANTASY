@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 4a3d54973ac9f86428043f5001d6f7bb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - DeathSound: {fileID: 8300000, guid: 8cd53dab10a5cb64eac52311870a8ee6, type: 3}
+  - ImpactSound: {instanceID: 0}
+  - HurtSound: {instanceID: 0}
+  - SpawnRing: {instanceID: 0}
+  - SpawnSound: {instanceID: 0}
+  - StepSound: {instanceID: 0}
+  - GameoverMenu: {instanceID: 0}
+  - MediumFireFX: {instanceID: 0}
+  - MediumExplosionSound: {instanceID: 0}
+  - LargeExplosionSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
